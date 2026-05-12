@@ -6,7 +6,7 @@ export class Sudoku {
     this.grid = generateSudoku();
   }
 
-  getDuolicatePositions(row, column, value) {
+  getDuplicatePositions(row, column, value) {
     const duplicatesInColumn = this.getDuplicatePositionsInColumn(
       row,
       column,

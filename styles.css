@@ -3,9 +3,11 @@
   --bg-cell: #f2f2f2;
   --text-color: #222222;
   --filled-bg: #d9d9d9;
+  --alt-text-color: #ffffff;
 
   --selected: #ffdbb3;
   --highlighted: #fff3e5;
+  --error: #ff8c8c;
 
   --gap: 0.5vmin;
   --cell-size: 8vmin;
@@ -67,6 +69,11 @@ body {
   background-color: var(--selected);
 }
 
+.cell.error {
+  background-color: var(--error);
+  color: var(--alt-text-color);
+}
+
 .numbers {
   display: grid;
   grid-template-columns: repeat(5, auto);
@@ -95,4 +102,32 @@ body {
   font-size: var(--font-size);
   color: var(--text-color);
   cursor: pointer;
+}
+
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0% {
+    transform: scale(1.2);
+  }
+
+  25% {
+    transform: scale(1.2) rotate(30deg);
+  }
+
+  50% {
+    transform: scale(1.2) rotate(-30deg);
+  }
+}
+
+.zoom {
+  animation: zoom 0.5s ease-in-out;
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1.2);
+  }
 }
