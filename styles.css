@@ -4,6 +4,9 @@
   --text-color: #222222;
   --filled-bg: #d9d9d9;
 
+  --selected: #ffdbb3;
+  --highlighted: #fff3e5;
+
   --gap: 0.5vmin;
   --cell-size: 8vmin;
   --border-radius: 0.5vmin;
@@ -54,6 +57,14 @@ body {
 
 .cell.filled {
   background-color: var(--filled-bg);
+}
+
+.cell.highlighted {
+  background-color: var(--highlighted);
+}
+
+.cell.selected {
+  background-color: var(--selected);
 }
 
 .numbers {

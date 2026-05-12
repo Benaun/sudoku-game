@@ -7,3 +7,7 @@ export const convertIndexToPosition = (index) => {
     column: index % GIRD_SIZE,
   };
 };
+
+export const convertPositionToIndex = (row, column) => {
+  return row * GIRD_SIZE + column;
+};
