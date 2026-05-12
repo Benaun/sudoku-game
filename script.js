@@ -14,6 +14,8 @@ let selectedCell;
 const init = () => {
   initCells();
   initNumbers();
+  initRemover();
+  initKeyEvent();
 };
 
 const initCells = () => {
@@ -115,6 +117,10 @@ const onNumberClick = (number) => {
   );
   selectedCell.classList.add("selected");
   setValueInSelectedCell(number);
+
+  if (!sudoku.hasEmptyCells()) {
+    setTimeout(() => winAnimation(), 500);
+  }
 };
 
 const setValueInSelectedCell = (value) => {
@@ -134,6 +140,50 @@ const highLightDuplicates = (duplicatesPositions) => {
     const index = convertPositionToIndex(duplicate.row, duplicate.column);
     setTimeout(() => cells[index].classList.add("error", "shake"), 0);
   });
+};
+
+const initRemover = () => {
+  const remover = document.querySelector(".remove");
+  remover.addEventListener("click", () => onRemoveClick());
+};
+
+const onRemoveClick = () => {
+  if (!selectedCell) return;
+  if (selectedCell.classList.contains("filled")) return;
+
+  cells.forEach((cell) =>
+    cell.classList.remove("error", "shake", "zomm", "selected"),
+  );
+  selectedCell.classList.add("selected");
+  const { row, column } = convertIndexToPosition(selectedCellIndex);
+  selectedCell.innerHTML = "";
+  sudoku.grid[row][column] = null;
+};
+
+const initKeyEvent = () => {
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Backspace") {
+      onRemoveClick();
+    } else if (event.key >= "1" && event.key <= "9") {
+      onNumberClick(Number(event.key));
+    }
+  });
+};
+
+const winAnimation = () => {
+  cells.forEach((cell) =>
+    cell.classList.remove("error", "shake", "zomm", "selected", "highlighted"),
+  );
+  cells.forEach((cell, i) => {
+    setTimeout(() => cell.classList.add("highlighted", "zoom"), i * 15);
+  });
+
+  for (let i = 1; i < 10; i++) {
+    setTimeout(
+      () => cells.forEach((cell) => cell.classList.toggle("highlighted")),
+      500 + cells.length * 15 + 300 * i,
+    );
+  }
 };
 
 init();
