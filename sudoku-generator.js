@@ -84,7 +84,7 @@ const validateBox = (grid, row, column, value) => {
 };
 
 const removeCells = (grid) => {
-  const DIFFICULTY = 1;
+  const DIFFICULTY = 40;
   const resultGrid = [...grid].map((row) => [...row]);
 
   let i = 0;
