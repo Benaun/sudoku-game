@@ -2,6 +2,7 @@
   --bg: #7c7c7c;
   --bg-cell: #f2f2f2;
   --text-color: #222222;
+  --filled-bg: #d9d9d9;
 
   --gap: 0.5vmin;
   --cell-size: 8vmin;
@@ -49,6 +50,10 @@ body {
   background-color: var(--bg-cell);
   font-size: var(--font-size);
   cursor: pointer;
+}
+
+.cell.filled {
+  background-color: var(--filled-bg);
 }
 
 .numbers {
